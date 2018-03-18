@@ -65,7 +65,7 @@ xgb.model = xgboost(data = feature_matrix, label = target, max.depth = 1, eta = 
                     objective = "reg:linear", nrounds = 2500)
 
 unscaled_importance_matrix <- xgb.importance(model = xgb.model)
-unscaled_topn_features = colnames(feature_matrix)[as.integer(importance_matrix[1:n_important_features]$Feature)]
+unscaled_topn_features = colnames(feature_matrix)[as.integer(unscaled_importance_matrix[1:n_important_features]$Feature)]
 xgb.plot.importance(importance_matrix = unscaled_importance_matrix, top_n = n_important_features)
 
 
